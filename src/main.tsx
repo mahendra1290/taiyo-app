@@ -5,12 +5,28 @@ import './index.css';
 import AddContact from './routes/add-contact';
 import Root from './routes/root';
 import Contacts from './routes/contacts';
+import Charts from './routes/charts';
+import ContactDetails from './routes/contact-details';
+import { Provider } from 'react-redux';
+import store from './app/store';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
     children: [
+      {
+        path: 'charts',
+        element: <Charts />,
+      },
+      {
+        path: 'contacts/:id',
+        element: <ContactDetails />,
+      },
+      {
+        path: 'edit-contact/:id',
+        element: <AddContact />,
+      },
       {
         path: 'add-contact',
         element: <AddContact />,
@@ -29,6 +45,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 );
