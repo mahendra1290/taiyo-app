@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const Root = () => {
@@ -20,7 +21,9 @@ const Root = () => {
           </ul>
         </nav>
         <div className='flex-1 p-2 md:p-4'>
-          <Outlet />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </div>
       </section>
       <ul className='fixed bottom-0 left-0 right-0 flex sm:hidden justify-around bg-gray-100 p-2'>

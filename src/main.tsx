@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import AddContact from './routes/add-contact';
 import Root from './routes/root';
 import Contacts from './routes/contacts';
-import Charts from './routes/charts';
 import ContactDetails from './routes/contact-details';
 import { Provider } from 'react-redux';
 import store from './app/store';
-import ContactsRoot from './routes/contacts-root';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const ContactsRoot = lazy(() => import('./routes/contacts-root'));
+const Charts = lazy(() => import('./routes/charts'));
 
 const router = createBrowserRouter([
   {
