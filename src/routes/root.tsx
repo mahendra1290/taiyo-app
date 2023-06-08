@@ -9,7 +9,7 @@ const Root = () => {
 
   return (
     <>
-      <section className='flex h-[calc(100vh-56px)] overflow-auto sm:h-auto'>
+      <section className='flex pb-[56px] overflow-auto sm:h-auto'>
         <nav className='min-h-screen hidden sm:block'>
           <ul className='min-h-full flex flex-col gap-2 py-4 px-2 bg-gray-100 shadow-lg'>
             <NavLink to='/contacts' className={navLinkClasses}>
