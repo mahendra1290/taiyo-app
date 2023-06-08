@@ -17,13 +17,13 @@ const ContactCard = ({ id, firstName, lastName, status }: Contact) => {
         {firstName} {lastName}
       </p>
       <p>{status}</p>
-      <Link to={`/edit-contact/${id}`}>
+      <Link to={`${id}/edit`}>
         <Button className='mr-2'>Edit</Button>
       </Link>
       <Button onClick={handleDelete} className='mr-2' variant='danger'>
         Delete
       </Button>
-      <Link to={`/contacts/${id}`}>
+      <Link to={`${id}`}>
         <Button className='mr-2' variant='secondary'>
           View
         </Button>

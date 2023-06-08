@@ -56,15 +56,24 @@ const AddContact = () => {
 
   return (
     <>
-      <h1 className='text-2xl font-bold mb-4'>{contact ? 'Edit' : 'Add'} Contact</h1>
       <form onSubmit={handleSubmit} className='mx-auto max-w-md p-4 bg-blue-50'>
         <label>
           <span className='capitalize'>fist name</span>
-          <input type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+          <input
+            type='text'
+            value={firstName}
+            placeholder='Enter first name'
+            onChange={(e) => setFirstName(e.target.value)}
+          />
         </label>
         <label>
           <span className='capitalize'>last name</span>
-          <input type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+          <input
+            type='text'
+            value={lastName}
+            placeholder='Enter last name'
+            onChange={(e) => setLastName(e.target.value)}
+          />
         </label>
         <div>
           <p className='capitalize'>status</p>
@@ -76,7 +85,7 @@ const AddContact = () => {
             />
             <span>active</span>
           </label>
-          <label>
+          <label className='flex items-center'>
             <input
               type='radio'
               checked={status === 'inactive'}

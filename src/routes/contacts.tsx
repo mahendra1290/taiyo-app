@@ -9,8 +9,7 @@ const Contacts = () => {
 
   return (
     <>
-      <h1 className='text-2xl font-bold mb-4'>Contacts</h1>
-      <div className='grid md:grid-cols-2 gap-2'>
+      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
         {contacts.map((contact) => {
           return (
             <div key={contact.id}>
@@ -18,9 +17,9 @@ const Contacts = () => {
             </div>
           );
         })}
-        {contacts.length === 0 && <p>No contacts found</p>}
+        {contacts.length === 0 && <p className='my-4'>No contacts found</p>}
       </div>
-      <Link to='/add-contact'>
+      <Link to='add'>
         <Button>Add Contact</Button>
       </Link>
     </>

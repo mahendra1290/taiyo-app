@@ -9,6 +9,8 @@ import Charts from './routes/charts';
 import ContactDetails from './routes/contact-details';
 import { Provider } from 'react-redux';
 import store from './app/store';
+import ContactsRoot from './routes/contacts-root';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const router = createBrowserRouter([
   {
@@ -16,37 +18,43 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
+        path: '/',
+        element: <ContactsRoot />,
+        children: [
+          {
+            path: ':id/edit',
+            element: <AddContact />,
+          },
+          {
+            path: 'add',
+            element: <AddContact />,
+          },
+          {
+            path: ':id',
+            element: <ContactDetails />,
+          },
+          {
+            index: true,
+            element: <Contacts />,
+          },
+        ],
+      },
+      {
         path: 'charts',
         element: <Charts />,
-      },
-      {
-        path: 'contacts/:id',
-        element: <ContactDetails />,
-      },
-      {
-        path: 'edit-contact/:id',
-        element: <AddContact />,
-      },
-      {
-        path: 'add-contact',
-        element: <AddContact />,
-      },
-      {
-        path: 'contacts',
-        element: <Contacts />,
-      },
-      {
-        index: true,
-        element: <Contacts />,
       },
     ],
   },
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </Provider>
   </React.StrictMode>,
 );

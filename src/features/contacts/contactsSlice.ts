@@ -6,7 +6,6 @@ interface ContactState {
 }
 
 const initialState: ContactState = {
-  // generate 5 contacts
   value: [...Array(5)].map((_, index) => ({
     id: String(index),
     firstName: `First Name ${index}`,

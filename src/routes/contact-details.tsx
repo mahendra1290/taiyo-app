@@ -14,7 +14,7 @@ const ContactDetails = () => {
       <p>fist name: {contact?.firstName}</p>
       <p>last name: {contact?.lastName}</p>
       <p>status: {contact?.status}</p>
-      <Link to={`/edit-contact/${id}`}>
+      <Link to={'edit'}>
         <Button>Edit</Button>
       </Link>
     </div>
