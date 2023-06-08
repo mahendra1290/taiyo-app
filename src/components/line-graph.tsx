@@ -23,7 +23,7 @@ const LineGraph = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['chartData'],
     queryFn: getChartData,
-    cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+    staleTime: 1000 * 60 * 60 * 24, // 24 hours
   });
 
   if (isLoading) {

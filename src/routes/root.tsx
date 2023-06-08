@@ -11,8 +11,8 @@ const Root = () => {
     <>
       <section className='flex h-[calc(100vh-56px)] overflow-auto sm:h-auto'>
         <nav className='min-h-screen hidden sm:block'>
-          <ul className='min-h-full flex flex-col gap-2 py-4 px-2 bg-gray-100'>
-            <NavLink to='/' className={navLinkClasses}>
+          <ul className='min-h-full flex flex-col gap-2 py-4 px-2 bg-gray-100 shadow-lg'>
+            <NavLink to='/contacts' className={navLinkClasses}>
               Contacts
             </NavLink>
             <NavLink to='/charts' className={navLinkClasses}>
@@ -24,6 +24,10 @@ const Root = () => {
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
+          <p className='text-sm text-gray-500 text-center mt-4'>
+            made with ❤️
+            <a href='https://github.com/mahendra1290/taiyo-app'> by @mahendra1290</a>
+          </p>
         </div>
       </section>
       <ul className='fixed bottom-0 left-0 right-0 flex sm:hidden justify-around bg-gray-100 p-2'>

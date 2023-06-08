@@ -21,7 +21,7 @@ const LeafletMap = () => {
   const { data: mapData, isLoading } = useQuery({
     queryKey: ['mapData'],
     queryFn: getMapData,
-    cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+    staleTime: 1000 * 60 * 60 * 24, // 24 hours
   });
 
   if (isLoading) {

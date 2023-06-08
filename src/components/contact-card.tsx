@@ -12,7 +12,7 @@ const ContactCard = ({ id, firstName, lastName, status }: Contact) => {
   };
 
   return (
-    <div className='bg-white rounded-md p-4 shadow-md mb-3'>
+    <div className='bg-white border rounded-md p-4 shadow-md mb-3'>
       <p>
         {firstName} {lastName}
       </p>
