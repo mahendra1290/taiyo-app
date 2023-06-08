@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  variant?: 'primary' | 'secondary' | 'danger';
+  variant?: 'primary' | 'secondary' | 'danger' | 'outline';
 }
 
 const Button = ({ children, className, variant, ...props }: ButtonProps) => {
@@ -12,6 +12,10 @@ const Button = ({ children, className, variant, ...props }: ButtonProps) => {
   }
   if (variant === 'danger') {
     variantClasses = 'bg-red-500 px-4 py-2 rounded-md text-white hover:bg-red-600';
+  }
+  if (variant === 'outline') {
+    variantClasses =
+      'bg-transparent border-2 border-blue-500 px-4 py-2 rounded-md text-blue-500 hover:border-blue-800 hover:text-blue-800';
   }
 
   return (

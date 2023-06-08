@@ -1,52 +1,34 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useState } from 'react';
+import Button from '../components/Button';
 const LeafletMap = lazy(() => import('../components/leaflet-map'));
-
-interface DailyCases {
-  date: string;
-  cases: number;
-}
-
-const getChartData = async () => {
-  const res = await axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=all');
-  const cases = res.data.cases;
-  const series = Object.keys(cases).map((key) => {
-    return {
-      date: key,
-      cases: cases[key],
-    };
-  });
-  return series as DailyCases[];
-};
+const LineGraph = lazy(() => import('../components/line-graph'));
 
 const Charts = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: ['chartData'],
-    queryFn: getChartData,
-  });
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const [activeTab, setActiveTab] = useState('chart');
 
   return (
     <>
       <h1 className='text-2xl font-bold mb-2'>Charts & Maps</h1>
-      <LineChart
-        width={800}
-        height={400}
-        data={data}
-        margin={{ top: 5, right: 10, bottom: 5, left: 50 }}
-      >
-        <Line type='monotone' dataKey='cases' stroke='#8884d8' />
-        <CartesianGrid stroke='#ccc' strokeDasharray='5 5' />
-        <XAxis dataKey='date' />
-        <YAxis />
-      </LineChart>
+      <div className='mb-4'>
+        <Button
+          variant='outline'
+          onClick={() => setActiveTab('chart')}
+          className={activeTab === 'chart' ? 'bg-green-200 text-black' : ''}
+        >
+          Chart
+        </Button>
+        <Button
+          variant='outline'
+          onClick={() => setActiveTab('map')}
+          className={`ml-2 ${activeTab === 'map' ? 'bg-green-200 text-black' : ''}`}
+        >
+          Map
+        </Button>
+      </div>
+
       <Suspense fallback={<div>Loading...</div>}>
-        <LeafletMap />
+        {activeTab === 'chart' && <LineGraph />}
+        {activeTab === 'map' && <LeafletMap />}
       </Suspense>
     </>
   );
