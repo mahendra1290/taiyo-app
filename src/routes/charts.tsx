@@ -1,8 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { LatLng } from 'leaflet';
-import { useState } from 'react';
-import { MapContainer, Marker, Popup, TileLayer, useMapEvent, useMapEvents } from 'react-leaflet';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 interface DailyCases {
